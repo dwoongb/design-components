@@ -1,3 +1,5 @@
+'use client';
+
 import { semanticTokens } from '@styles/semanticTokens';
 
 export interface ButtonProps

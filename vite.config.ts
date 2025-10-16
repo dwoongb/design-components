@@ -1,6 +1,8 @@
 /// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 
 // https://vite.dev/config/
 import path from 'node:path';
@@ -13,17 +15,13 @@ const dirname =
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [
-    react({
-      jsxImportSource: '@emotion/react',
-    }),
-  ],
+  // @ts-expect-error - @tailwindcss/vite v4 has type incompatibility with Vite 7 (known issue: https://github.com/tailwindlabs/tailwindcss/issues/16488)
+  plugins: [react(), tailwindcss(), cssInjectedByJsPlugin()],
   build: {
     emptyOutDir: false,
     lib: {
       entry: {
         index: path.resolve(dirname, 'src/index.ts'),
-        'styles/index': path.resolve(dirname, 'src/styles/index.ts'),
       },
       formats: ['es', 'cjs'],
     },
@@ -31,10 +29,7 @@ export default defineConfig({
       external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
         assetFileNames: 'assets/[name][extname]',
-        entryFileNames: (chunkInfo) => {
-          if (chunkInfo.name.includes('styles/index')) {
-            return 'styles/index.[format].js';
-          }
+        entryFileNames: () => {
           return 'index.[format].js';
         },
         chunkFileNames: () => {
@@ -55,7 +50,6 @@ export default defineConfig({
     alias: {
       '@': path.resolve(dirname, './src'),
       '@components': path.resolve(dirname, './src/components'),
-      '@styles': path.resolve(dirname, './src/styles'),
     },
   },
   test: {

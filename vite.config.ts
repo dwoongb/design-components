@@ -13,23 +13,33 @@ const dirname =
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react({
+      jsxImportSource: '@emotion/react',
+    }),
+  ],
   build: {
+    emptyOutDir: false,
     lib: {
       entry: {
-        index: path.resolve(dirname, './src/index.ts'),
-        'styles/index': path.resolve(dirname, './src/styles/index.ts'),
+        index: path.resolve(dirname, 'src/index.ts'),
+        'styles/index': path.resolve(dirname, 'src/styles/index.ts'),
       },
-      name: 'DesignComponents',
-      fileName: (format) => `[name].${format}.js`,
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
+        assetFileNames: 'assets/[name][extname]',
+        entryFileNames: (chunkInfo) => {
+          if (chunkInfo.name.includes('styles/index')) {
+            return 'styles/index.[format].js';
+          }
+          return 'index.[format].js';
+        },
+        chunkFileNames: () => {
+          // This shouldn't be called, but if it is, put chunks in a subdirectory
+          return '_chunks/[name]-[hash].js';
         },
       },
     },

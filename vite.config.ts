@@ -41,6 +41,13 @@ export default defineConfig({
           // This shouldn't be called, but if it is, put chunks in a subdirectory
           return '_chunks/[name]-[hash].js';
         },
+        banner: (chunk) => {
+          // Add 'use client' directive to main entry point
+          if (chunk.name === 'index') {
+            return "'use client';";
+          }
+          return '';
+        },
       },
     },
   },

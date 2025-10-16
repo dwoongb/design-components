@@ -1,6 +1,9 @@
 import { foundationTokens } from './foundationTokens';
 import { semanticTokens } from './semanticTokens';
 
+export { foundationTokens } from './foundationTokens';
+export { semanticTokens } from './semanticTokens';
+
 export type { FoundationTokens } from './foundationTokens';
 export type { SemanticTokens } from './semanticTokens';
 

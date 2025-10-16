@@ -1,0 +1,133 @@
+import { Meta } from '@storybook/blocks';
+import { semanticTokens } from '../styles/semanticTokens';
+
+<Meta title="Design System/Semantic Tokens" />
+
+# Semantic Tokens
+
+Component-specific tokens with semantic meaning. These tokens reference foundation tokens and define how components should look.
+
+---
+
+## Button Tokens
+
+### Base Styles
+
+All button variants share these base styles:
+
+| Property      | Token Path                                | Value                                     |
+| ------------- | ----------------------------------------- | ----------------------------------------- |
+| Font Family   | `semanticTokens.button.base.fontFamily`   | {semanticTokens.button.base.fontFamily}   |
+| Font Weight   | `semanticTokens.button.base.fontWeight`   | {semanticTokens.button.base.fontWeight}   |
+| Border Radius | `semanticTokens.button.base.borderRadius` | {semanticTokens.button.base.borderRadius} |
+| Transition    | `semanticTokens.button.base.transition`   | {semanticTokens.button.base.transition}   |
+
+---
+
+### Variants
+
+#### Primary Button
+
+| Property          | Token Path                                             | Value                                                                                                                                                                                                                                                              |
+| ----------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Background Color  | `semanticTokens.button.primary.backgroundColor`        | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.primary.backgroundColor, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.primary.backgroundColor}               |
+| Text Color        | `semanticTokens.button.primary.color`                  | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.primary.color, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.primary.color}                                                                                                                                                                                                                              |
+| Hover Background  | `semanticTokens.button.primary.hover.backgroundColor`  | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.primary.hover.backgroundColor, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.primary.hover.backgroundColor}   |
+| Active Background | `semanticTokens.button.primary.active.backgroundColor` | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.primary.active.backgroundColor, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.primary.active.backgroundColor} |
+
+---
+
+#### Secondary Button
+
+| Property          | Token Path                                               | Value                                                                                                                                                                                                                                                                  |
+| ----------------- | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Background Color  | `semanticTokens.button.secondary.backgroundColor`        | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.secondary.backgroundColor, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.secondary.backgroundColor}               |
+| Text Color        | `semanticTokens.button.secondary.color`                  | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.secondary.color, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.secondary.color}                                                                                                                                                                                                                                |
+| Hover Background  | `semanticTokens.button.secondary.hover.backgroundColor`  | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.secondary.hover.backgroundColor, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.secondary.hover.backgroundColor}   |
+| Active Background | `semanticTokens.button.secondary.active.backgroundColor` | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.secondary.active.backgroundColor, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.secondary.active.backgroundColor} |
+
+---
+
+#### Outline Button
+
+| Property         | Token Path                                            | Value                                                                                                                                                                                                                                                            |
+| ---------------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Background Color | `semanticTokens.button.outline.backgroundColor`       | transparent                                                                                                                                                                                                                                  |
+| Border Width     | `semanticTokens.button.outline.borderWidth`           | {semanticTokens.button.outline.borderWidth}                                                                                                                                                                                                                      |
+| Border Color     | `semanticTokens.button.outline.borderColor`           | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: 'transparent', border: `2px solid ${semanticTokens.button.outline.borderColor}`, borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.outline.borderColor}         |
+| Text Color       | `semanticTokens.button.outline.color`                 | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.outline.color, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.outline.color}                                                                                                                                                                                                                            |
+| Hover Background | `semanticTokens.button.outline.hover.backgroundColor` | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.outline.hover.backgroundColor, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.outline.hover.backgroundColor} |
+| Hover Text Color | `semanticTokens.button.outline.hover.color`           | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.outline.hover.color, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.outline.hover.color}                                                                                                                                                                                                                      |
+
+---
+
+### Sizes
+
+| Size   | Token Path                      | Padding                                 | Font Size                                |
+| ------ | ------------------------------- | --------------------------------------- | ---------------------------------------- |
+| Small  | `semanticTokens.button.size.sm` | {semanticTokens.button.size.sm.padding} | {semanticTokens.button.size.sm.fontSize} |
+| Medium | `semanticTokens.button.size.md` | {semanticTokens.button.size.md.padding} | {semanticTokens.button.size.md.fontSize} |
+| Large  | `semanticTokens.button.size.lg` | {semanticTokens.button.size.lg.padding} | {semanticTokens.button.size.lg.fontSize} |
+
+---
+
+### States
+
+#### Disabled State
+
+| Property | Token Path                               | Value                                    |
+| -------- | ---------------------------------------- | ---------------------------------------- |
+| Opacity  | `semanticTokens.button.disabled.opacity` | {semanticTokens.button.disabled.opacity} |
+| Cursor   | `semanticTokens.button.disabled.cursor`  | {semanticTokens.button.disabled.cursor}  |
+
+---
+
+## Usage in Code
+
+### Import
+
+```tsx
+import { semanticTokens } from 'design-components/styles';
+```
+
+### Example: Button Component
+
+```tsx
+const Button = ({ variant = 'primary', size = 'md' }) => {
+  const btn = semanticTokens.button;
+
+  return (
+    <button
+      css={{
+        // Base styles
+        ...btn.base,
+
+        // Variant styles
+        backgroundColor: btn[variant].backgroundColor,
+        color: btn[variant].color,
+
+        // Size styles
+        ...btn.size[size],
+
+        // Hover state
+        '&:hover': {
+          backgroundColor: btn[variant].hover.backgroundColor,
+        },
+      }}
+    >
+      Click me
+    </button>
+  );
+};
+```
+
+---
+
+## Future Components
+
+More semantic tokens will be added for:
+
+- **Input**: `semanticTokens.input.*`
+- **Card**: `semanticTokens.card.*`
+- **Badge**: `semanticTokens.badge.*`
+- **Modal**: `semanticTokens.modal.*`

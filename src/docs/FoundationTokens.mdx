@@ -1,0 +1,278 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+import { foundationTokens } from '../styles/foundationTokens';
+
+<Meta title='Design System/Foundation Tokens' />
+
+# Foundation Tokens
+
+The foundational design values including colors, typography, spacing, and more.
+
+---
+
+## Colors
+
+### Blue (Primary)
+
+<ColorPalette>
+  <ColorItem
+    title='Blue'
+    subtitle='Primary brand color'
+    colors={{
+      50: foundationTokens.colors.blue[50],
+      100: foundationTokens.colors.blue[100],
+      200: foundationTokens.colors.blue[200],
+      300: foundationTokens.colors.blue[300],
+      400: foundationTokens.colors.blue[400],
+      500: foundationTokens.colors.blue[500],
+      600: foundationTokens.colors.blue[600],
+      700: foundationTokens.colors.blue[700],
+      800: foundationTokens.colors.blue[800],
+      900: foundationTokens.colors.blue[900],
+    }}
+  />
+</ColorPalette>
+
+### Gray (Neutral)
+
+<ColorPalette>
+  <ColorItem
+    title='Gray'
+    subtitle='Neutral colors'
+    colors={{
+      50: foundationTokens.colors.gray[50],
+      100: foundationTokens.colors.gray[100],
+      200: foundationTokens.colors.gray[200],
+      300: foundationTokens.colors.gray[300],
+      400: foundationTokens.colors.gray[400],
+      500: foundationTokens.colors.gray[500],
+      600: foundationTokens.colors.gray[600],
+      700: foundationTokens.colors.gray[700],
+      800: foundationTokens.colors.gray[800],
+      900: foundationTokens.colors.gray[900],
+    }}
+  />
+</ColorPalette>
+
+### Semantic Colors
+
+<ColorPalette>
+  <ColorItem
+    title='Green'
+    subtitle='Success state'
+    colors={{
+      500: foundationTokens.colors.green[500],
+      600: foundationTokens.colors.green[600],
+    }}
+  />
+  <ColorItem
+    title='Yellow'
+    subtitle='Warning state'
+    colors={{
+      500: foundationTokens.colors.yellow[500],
+      600: foundationTokens.colors.yellow[600],
+    }}
+  />
+  <ColorItem
+    title='Red'
+    subtitle='Error state'
+    colors={{
+      500: foundationTokens.colors.red[500],
+      600: foundationTokens.colors.red[600],
+    }}
+  />
+</ColorPalette>
+
+---
+
+## Typography
+
+### Font Family
+
+<div
+  style={{
+    fontFamily: foundationTokens.fonts.base,
+    fontSize: '1.125rem',
+    padding: '1rem',
+    border: '1px solid #e5e7eb',
+    borderRadius: '0.5rem',
+    marginBottom: '1rem',
+  }}
+>
+  <strong>Base Font:</strong> {foundationTokens.fonts.base}
+  <br />
+  The quick brown fox jumps over the lazy dog
+  <br />
+  ABCDEFGHIJKLMNOPQRSTUVWXYZ
+  <br />
+  0123456789
+</div>
+
+<div
+  style={{
+    fontFamily: foundationTokens.fonts.mono,
+    fontSize: '1.125rem',
+    padding: '1rem',
+    border: '1px solid #e5e7eb',
+    borderRadius: '0.5rem',
+  }}
+>
+  <strong>Mono Font:</strong> {foundationTokens.fonts.mono}
+  <br />
+  The quick brown fox jumps over the lazy dog
+  <br />
+  ABCDEFGHIJKLMNOPQRSTUVWXYZ
+  <br />
+  0123456789
+</div>
+
+### Font Sizes
+
+| Token | Value                               | Preview                                                                                |
+| ----- | ----------------------------------- | -------------------------------------------------------------------------------------- |
+| xs    | {foundationTokens.fontSizes.xs}     | <span style={{fontSize: foundationTokens.fontSizes.xs}}>The quick brown fox</span>     |
+| sm    | {foundationTokens.fontSizes.sm}     | <span style={{fontSize: foundationTokens.fontSizes.sm}}>The quick brown fox</span>     |
+| base  | {foundationTokens.fontSizes.base}   | <span style={{fontSize: foundationTokens.fontSizes.base}}>The quick brown fox</span>   |
+| lg    | {foundationTokens.fontSizes.lg}     | <span style={{fontSize: foundationTokens.fontSizes.lg}}>The quick brown fox</span>     |
+| xl    | {foundationTokens.fontSizes.xl}     | <span style={{fontSize: foundationTokens.fontSizes.xl}}>The quick brown fox</span>     |
+| 2xl   | {foundationTokens.fontSizes['2xl']} | <span style={{fontSize: foundationTokens.fontSizes['2xl']}}>The quick brown fox</span> |
+| 3xl   | {foundationTokens.fontSizes['3xl']} | <span style={{fontSize: foundationTokens.fontSizes['3xl']}}>The quick brown fox</span> |
+| 4xl   | {foundationTokens.fontSizes['4xl']} | <span style={{fontSize: foundationTokens.fontSizes['4xl']}}>The quick brown fox</span> |
+
+### Font Weights
+
+| Token    | Value                                   | Preview                                                                                      |
+| -------- | --------------------------------------- | -------------------------------------------------------------------------------------------- |
+| normal   | {foundationTokens.fontWeights.normal}   | <span style={{fontWeight: foundationTokens.fontWeights.normal}}>The quick brown fox</span>   |
+| medium   | {foundationTokens.fontWeights.medium}   | <span style={{fontWeight: foundationTokens.fontWeights.medium}}>The quick brown fox</span>   |
+| semibold | {foundationTokens.fontWeights.semibold} | <span style={{fontWeight: foundationTokens.fontWeights.semibold}}>The quick brown fox</span> |
+| bold     | {foundationTokens.fontWeights.bold}     | <span style={{fontWeight: foundationTokens.fontWeights.bold}}>The quick brown fox</span>     |
+
+### Line Heights
+
+| Token   | Value                                  |
+| ------- | -------------------------------------- |
+| tight   | {foundationTokens.lineHeights.tight}   |
+| normal  | {foundationTokens.lineHeights.normal}  |
+| relaxed | {foundationTokens.lineHeights.relaxed} |
+
+---
+
+## Spacing
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+    gap: '1rem',
+    marginTop: '1rem',
+  }}
+>
+  {Object.entries(foundationTokens.spacing).map(([key, value]) => (
+    <div
+      key={key}
+      style={{
+        border: '1px solid #e5e7eb',
+        borderRadius: '0.5rem',
+        padding: '1rem',
+      }}
+    >
+      <div style={{ fontWeight: 600, marginBottom: '0.5rem' }}>{key}</div>
+      <div
+        style={{
+          fontSize: '0.875rem',
+          color: '#6b7280',
+          marginBottom: '0.5rem',
+        }}
+      >
+        {value}
+      </div>
+      <div
+        style={{
+          height: '2rem',
+          backgroundColor: foundationTokens.colors.blue[500],
+          width: value,
+        }}
+      />
+    </div>
+  ))}
+</div>
+
+---
+
+## Border Radius
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
+    gap: '1rem',
+    marginTop: '1rem',
+  }}
+>
+  {Object.entries(foundationTokens.borderRadius).map(([key, value]) => (
+    <div key={key} style={{ textAlign: 'center' }}>
+      <div
+        style={{
+          width: 80,
+          height: 80,
+          backgroundColor: foundationTokens.colors.blue[500],
+          borderRadius: value,
+          margin: '0 auto 0.5rem',
+        }}
+      />
+      <div style={{ fontWeight: 600 }}>{key}</div>
+      <div style={{ fontSize: '0.875rem', color: '#6b7280' }}>{value}</div>
+    </div>
+  ))}
+</div>
+
+---
+
+## Shadows
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+    gap: '2rem',
+    marginTop: '1rem',
+    padding: '2rem',
+    backgroundColor: '#f9fafb',
+  }}
+>
+  {Object.entries(foundationTokens.shadows).map(([key, value]) => (
+    <div key={key} style={{ textAlign: 'center' }}>
+      <div
+        style={{
+          width: 100,
+          height: 100,
+          backgroundColor: 'white',
+          borderRadius: foundationTokens.borderRadius.md,
+          margin: '0 auto 0.5rem',
+          boxShadow: value,
+        }}
+      />
+      <div style={{ fontWeight: 600 }}>{key}</div>
+    </div>
+  ))}
+</div>
+
+---
+
+## Transitions
+
+| Token | Value                               |
+| ----- | ----------------------------------- |
+| fast  | {foundationTokens.transitions.fast} |
+| base  | {foundationTokens.transitions.base} |
+| slow  | {foundationTokens.transitions.slow} |
+
+---
+
+## Z-Index
+
+| Token    | Value                              | Usage          |
+| -------- | ---------------------------------- | -------------- |
+| dropdown | {foundationTokens.zIndex.dropdown} | Dropdown menus |
+| modal    | {foundationTokens.zIndex.modal}    | Modal dialogs  |
+| tooltip  | {foundationTokens.zIndex.tooltip}  | Tooltips       |

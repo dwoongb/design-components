@@ -1,122 +1,261 @@
-import { Meta } from '@storybook/blocks';
-import { semanticTokens } from '../styles/semanticTokens';
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
 
 <Meta title="Design System/Semantic Tokens" />
 
 # Semantic Tokens
 
-Component-specific tokens with semantic meaning. These tokens reference foundation tokens and define how components should look.
+Component-specific design tokens with semantic meaning. These tokens define custom colors and styles for each component, defined in `theme.css` and kept in sync with actual component implementations.
+
+> **Note:** All semantic tokens can be customized by overriding CSS variables in `theme.css`.
 
 ---
 
-## Button Tokens
+## Overview
 
-### Base Styles
-
-All button variants share these base styles:
-
-| Property      | Token Path                                | Value                                     |
-| ------------- | ----------------------------------------- | ----------------------------------------- |
-| Font Family   | `semanticTokens.button.base.fontFamily`   | {semanticTokens.button.base.fontFamily}   |
-| Font Weight   | `semanticTokens.button.base.fontWeight`   | {semanticTokens.button.base.fontWeight}   |
-| Border Radius | `semanticTokens.button.base.borderRadius` | {semanticTokens.button.base.borderRadius} |
-| Transition    | `semanticTokens.button.base.transition`   | {semanticTokens.button.base.transition}   |
+Semantic tokens provide a layer of abstraction between foundation colors and component usage. They allow you to:
+- Customize component appearance centrally
+- Maintain consistent theming across components
+- Override colors without touching component code
 
 ---
 
-### Variants
+## Button Component Colors
 
-#### Primary Button
+### Primary Button (Blue)
 
-| Property          | Token Path                                             | Value                                                                                                                                                                                                                                                              |
-| ----------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Background Color  | `semanticTokens.button.primary.backgroundColor`        | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.primary.backgroundColor, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.primary.backgroundColor}               |
-| Text Color        | `semanticTokens.button.primary.color`                  | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.primary.color, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.primary.color}                                                                                                                                                                                                                              |
-| Hover Background  | `semanticTokens.button.primary.hover.backgroundColor`  | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.primary.hover.backgroundColor, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.primary.hover.backgroundColor}   |
-| Active Background | `semanticTokens.button.primary.active.backgroundColor` | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.primary.active.backgroundColor, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.primary.active.backgroundColor} |
+<ColorPalette>
+  <ColorItem
+    title='Primary Button'
+    subtitle='bg-btn-primary • hover:bg-btn-primary-hover'
+    colors={{
+      default: '#3b82f6',
+      hover: '#2563eb',
+      active: '#1d4ed8',
+    }}
+  />
+</ColorPalette>
 
----
+**CSS Variables:**
+```css
+--color-btn-primary: #3b82f6;        /* default state */
+--color-btn-primary-hover: #2563eb;  /* hover state */
+--color-btn-primary-active: #1d4ed8; /* active state */
+```
 
-#### Secondary Button
+**Tailwind Classes:**
+```tsx
+<div className="bg-btn-primary hover:bg-btn-primary-hover active:bg-btn-primary-active">
+  Primary Element
+</div>
+```
 
-| Property          | Token Path                                               | Value                                                                                                                                                                                                                                                                  |
-| ----------------- | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Background Color  | `semanticTokens.button.secondary.backgroundColor`        | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.secondary.backgroundColor, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.secondary.backgroundColor}               |
-| Text Color        | `semanticTokens.button.secondary.color`                  | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.secondary.color, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.secondary.color}                                                                                                                                                                                                                                |
-| Hover Background  | `semanticTokens.button.secondary.hover.backgroundColor`  | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.secondary.hover.backgroundColor, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.secondary.hover.backgroundColor}   |
-| Active Background | `semanticTokens.button.secondary.active.backgroundColor` | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.secondary.active.backgroundColor, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.secondary.active.backgroundColor} |
-
----
-
-#### Outline Button
-
-| Property         | Token Path                                            | Value                                                                                                                                                                                                                                                            |
-| ---------------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Background Color | `semanticTokens.button.outline.backgroundColor`       | transparent                                                                                                                                                                                                                                  |
-| Border Width     | `semanticTokens.button.outline.borderWidth`           | {semanticTokens.button.outline.borderWidth}                                                                                                                                                                                                                      |
-| Border Color     | `semanticTokens.button.outline.borderColor`           | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: 'transparent', border: `2px solid ${semanticTokens.button.outline.borderColor}`, borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.outline.borderColor}         |
-| Text Color       | `semanticTokens.button.outline.color`                 | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.outline.color, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.outline.color}                                                                                                                                                                                                                            |
-| Hover Background | `semanticTokens.button.outline.hover.backgroundColor` | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.outline.hover.backgroundColor, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.outline.hover.backgroundColor} |
-| Hover Text Color | `semanticTokens.button.outline.hover.color`           | <span style={{display: 'inline-block', width: 40, height: 40, backgroundColor: semanticTokens.button.outline.hover.color, border: '2px solid #e5e7eb', borderRadius: '4px', verticalAlign: 'middle', marginRight: 12}} /> {semanticTokens.button.outline.hover.color}                                                                                                                                                                                                                      |
+**Used in:**
+- `<Button variant="primary">`
 
 ---
 
-### Sizes
+### Secondary Button (Gray)
 
-| Size   | Token Path                      | Padding                                 | Font Size                                |
-| ------ | ------------------------------- | --------------------------------------- | ---------------------------------------- |
-| Small  | `semanticTokens.button.size.sm` | {semanticTokens.button.size.sm.padding} | {semanticTokens.button.size.sm.fontSize} |
-| Medium | `semanticTokens.button.size.md` | {semanticTokens.button.size.md.padding} | {semanticTokens.button.size.md.fontSize} |
-| Large  | `semanticTokens.button.size.lg` | {semanticTokens.button.size.lg.padding} | {semanticTokens.button.size.lg.fontSize} |
+<ColorPalette>
+  <ColorItem
+    title='Secondary Button'
+    subtitle='bg-btn-secondary • hover:bg-btn-secondary-hover'
+    colors={{
+      default: '#6b7280',
+      hover: '#4b5563',
+      active: '#374151',
+    }}
+  />
+</ColorPalette>
+
+**CSS Variables:**
+```css
+--color-btn-secondary: #6b7280;        /* default state */
+--color-btn-secondary-hover: #4b5563;  /* hover state */
+--color-btn-secondary-active: #374151; /* active state */
+```
+
+**Tailwind Classes:**
+```tsx
+<div className="bg-btn-secondary hover:bg-btn-secondary-hover active:bg-btn-secondary-active">
+  Secondary Element
+</div>
+```
+
+**Used in:**
+- `<Button variant="secondary">`
 
 ---
 
-### States
+### Outline Button
 
-#### Disabled State
+<ColorPalette>
+  <ColorItem
+    title='Outline Button'
+    subtitle='border-btn-outline • text-btn-outline'
+    colors={{
+      outline: '#3b82f6',
+    }}
+  />
+</ColorPalette>
 
-| Property | Token Path                               | Value                                    |
-| -------- | ---------------------------------------- | ---------------------------------------- |
-| Opacity  | `semanticTokens.button.disabled.opacity` | {semanticTokens.button.disabled.opacity} |
-| Cursor   | `semanticTokens.button.disabled.cursor`  | {semanticTokens.button.disabled.cursor}  |
+**CSS Variables:**
+```css
+--color-btn-outline: #3b82f6; /* border and text color */
+```
+
+**Tailwind Classes:**
+```tsx
+<div className="border-2 border-btn-outline text-btn-outline hover:bg-btn-outline hover:text-white">
+  Outline Element
+</div>
+```
+
+**Used in:**
+- `<Button variant="outline">`
+
+---
+
+## Button Sizes
+
+| Size   | Padding           | Font Size  | Tailwind Classes      |
+| ------ | ----------------- | ---------- | --------------------- |
+| Small  | 0.25rem 0.75rem   | 0.875rem   | `px-3 py-1 text-sm`   |
+| Medium | 0.5rem 1rem       | 1rem       | `px-4 py-2 text-base` |
+| Large  | 0.75rem 1.5rem    | 1.125rem   | `px-6 py-3 text-lg`   |
+
+**Tailwind Classes:**
+```tsx
+// Small
+<button className="px-3 py-1 text-sm">Small</button>
+
+// Medium
+<button className="px-4 py-2 text-base">Medium</button>
+
+// Large
+<button className="px-6 py-3 text-lg">Large</button>
+```
+
+---
+
+## Button States
+
+### Disabled State
+
+| Property | Value          | Tailwind Class        |
+| -------- | -------------- | --------------------- |
+| Opacity  | 0.5            | `opacity-50`          |
+| Cursor   | not-allowed    | `cursor-not-allowed`  |
+
+**Tailwind Classes:**
+```tsx
+<button className="opacity-50 cursor-not-allowed" disabled>
+  Disabled Button
+</button>
+```
+
+---
+
+## Customizing Semantic Colors
+
+### Method 1: Override CSS Variables
+
+```css
+/* Your global CSS file */
+@import '@dwoongb/design-components/style.css';
+
+:root {
+  /* Change primary button to purple */
+  --color-btn-primary: #8b5cf6;        /* purple-500 */
+  --color-btn-primary-hover: #7c3aed;  /* purple-600 */
+  --color-btn-primary-active: #6d28d9; /* purple-700 */
+
+  /* Change secondary button to teal */
+  --color-btn-secondary: #14b8a6;      /* teal-500 */
+  --color-btn-secondary-hover: #0d9488; /* teal-600 */
+  --color-btn-secondary-active: #0f766e; /* teal-700 */
+}
+```
+
+### Method 2: Use Tailwind v4 @theme
+
+```css
+@import 'tailwindcss';
+@import '@dwoongb/design-components/theme.css';
+
+@theme {
+  /* Customize button colors */
+  --color-btn-primary: #8b5cf6;
+  --color-btn-primary-hover: #7c3aed;
+  --color-btn-primary-active: #6d28d9;
+}
+```
 
 ---
 
 ## Usage in Code
 
-### Import
+### Using Semantic Tokens (Optional)
+
+You can reference the CSS variables directly in your JavaScript if needed:
 
 ```tsx
-import { semanticTokens } from 'design-components/styles';
+// Access CSS variable values programmatically
+const primaryColor = getComputedStyle(document.documentElement)
+  .getPropertyValue('--color-btn-primary'); // '#3b82f6'
 ```
 
-### Example: Button Component
+### Using Tailwind Classes (Recommended)
+
+The recommended approach is to use Tailwind classes directly:
 
 ```tsx
-const Button = ({ variant = 'primary', size = 'md' }) => {
-  const btn = semanticTokens.button;
+import { Button } from '@dwoongb/design-components';
+
+// Use component props
+<Button variant="primary" size="md">
+  Click me
+</Button>
+
+// Or build custom elements with semantic classes
+<div className="bg-btn-primary hover:bg-btn-primary-hover text-white px-4 py-2 rounded">
+  Custom Primary Element
+</div>
+```
+
+---
+
+## Component Implementation Reference
+
+### Actual Button Implementation
+
+For reference, here's how the Button component uses these tokens:
+
+```tsx
+// Button.tsx (simplified)
+export const Button = ({ variant = 'primary', size = 'md', ...props }) => {
+  const variantClasses = {
+    primary: 'bg-btn-primary text-white hover:bg-btn-primary-hover active:bg-btn-primary-active',
+    secondary: 'bg-btn-secondary text-white hover:bg-btn-secondary-hover active:bg-btn-secondary-active',
+    outline: 'bg-transparent border-2 border-btn-outline text-btn-outline hover:bg-btn-outline hover:text-white',
+  };
+
+  const sizeClasses = {
+    sm: 'px-3 py-1 text-sm',
+    md: 'px-4 py-2 text-base',
+    lg: 'px-6 py-3 text-lg',
+  };
 
   return (
     <button
-      css={{
-        // Base styles
-        ...btn.base,
-
-        // Variant styles
-        backgroundColor: btn[variant].backgroundColor,
-        color: btn[variant].color,
-
-        // Size styles
-        ...btn.size[size],
-
-        // Hover state
-        '&:hover': {
-          backgroundColor: btn[variant].hover.backgroundColor,
-        },
-      }}
-    >
-      Click me
-    </button>
+      className={cn(
+        'font-medium rounded-md transition-colors',
+        variantClasses[variant],
+        sizeClasses[size],
+        disabled && 'opacity-50 cursor-not-allowed'
+      )}
+      {...props}
+    />
   );
 };
 ```
@@ -125,9 +264,22 @@ const Button = ({ variant = 'primary', size = 'md' }) => {
 
 ## Future Components
 
-More semantic tokens will be added for:
+More semantic tokens will be added as new components are developed:
 
-- **Input**: `semanticTokens.input.*`
-- **Card**: `semanticTokens.card.*`
-- **Badge**: `semanticTokens.badge.*`
-- **Modal**: `semanticTokens.modal.*`
+### Planned Components
+- **Input**: `--color-input-border`, `--color-input-focus`, etc.
+- **Card**: `--color-card-bg`, `--color-card-border`, etc.
+- **Badge**: `--color-badge-primary`, `--color-badge-success`, etc.
+- **Modal**: `--color-modal-overlay`, `--color-modal-bg`, etc.
+
+Each component will follow the same pattern:
+1. Define CSS variables in `theme.css`
+2. Use Tailwind classes in component implementation
+3. Document tokens in this Storybook page
+
+---
+
+## Related Documentation
+
+- **[Foundation Tokens →](/?path=/docs/design-system-foundation-tokens--docs)** - Tailwind default color palette
+- **[Button Component →](/?path=/docs/components-button--docs)** - Button component documentation

@@ -2,6 +2,10 @@
 
 A React component library built with TypeScript, Tailwind CSS, and Storybook. This library provides a collection of reusable UI components with a comprehensive design system.
 
+## 📖 Demo
+
+**[View Live Storybook →](https://68f1d6c48510c8472511e8fe-skchyikeox.chromatic.com/)**
+
 ## 🚀 Features
 
 - ✅ **TypeScript** - Full type safety
@@ -243,7 +247,7 @@ const MyButton: React.FC<ButtonProps> = (props) => {
 
 ## 📚 Storybook
 
-View all components and design tokens in Storybook:
+Run Storybook locally to view all components and design tokens:
 
 ```bash
 npm run storybook
@@ -283,15 +287,11 @@ design-components/
 │   │   │   ├── Button.stories.ts
 │   │   │   └── index.ts
 │   │   └── index.ts
-│   ├── styles/              # Design tokens
-│   │   ├── foundationTokens.ts
-│   │   ├── semanticTokens.ts
-│   │   └── index.ts
 │   ├── utils/               # Utility functions
 │   │   └── cn.ts            # Class name utility
 │   ├── docs/                # Storybook documentation
 │   ├── index.css            # Main CSS with @theme
-│   ├── theme.css            # Theme-only CSS
+│   ├── theme.css            # Theme-only CSS (customizable)
 │   └── index.ts             # Main entry point
 ├── .storybook/              # Storybook configuration
 ├── tailwind.config.ts       # Tailwind configuration

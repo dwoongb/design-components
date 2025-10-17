@@ -1,25 +1,40 @@
 # Design Components
 
-A React component library built with TypeScript, Emotion, and Storybook. This library provides a collection of reusable UI components with a comprehensive design system.
+A React component library built with TypeScript, Tailwind CSS, and Storybook. This library provides a collection of reusable UI components with a comprehensive design system.
 
 ## 🚀 Features
 
 - ✅ **TypeScript** - Full type safety
-- ✅ **Emotion** - CSS-in-JS with `css` prop
+- ✅ **Tailwind CSS v4** - Modern utility-first CSS with `@theme` support
 - ✅ **Storybook** - Interactive component documentation
 - ✅ **Design Tokens** - Foundation and Semantic token system
-- ✅ **Responsive** - Mobile-first responsive design
+- ✅ **Customizable** - Easy theming with CSS variables
 - ✅ **Accessible** - Built with accessibility in mind
 - ✅ **Tree-shakeable** - Optimized bundle size
 
 ## 📦 Installation
 
 ```bash
-npm install design-components
+npm install @dwoongb/design-components
 # or
-pnpm add design-components
+pnpm add @dwoongb/design-components
 # or
-yarn add design-components
+yarn add @dwoongb/design-components
+```
+
+## 🎯 Quick Start
+
+```tsx
+import { Button } from '@dwoongb/design-components';
+import '@dwoongb/design-components/style.css';
+
+function App() {
+  return (
+    <Button variant="primary" size="md">
+      Click me
+    </Button>
+  );
+}
 ```
 
 ## 🎨 Components
@@ -29,7 +44,8 @@ yarn add design-components
 A versatile button component with multiple variants and sizes.
 
 ```tsx
-import { Button } from 'design-components';
+import { Button } from '@dwoongb/design-components';
+import '@dwoongb/design-components/style.css';
 
 function App() {
   return (
@@ -43,6 +59,9 @@ function App() {
       <Button variant="outline" size="sm">
         Outline Button
       </Button>
+      <Button disabled>
+        Disabled Button
+      </Button>
     </>
   );
 }
@@ -55,89 +74,202 @@ function App() {
 | `variant` | `'primary' \| 'secondary' \| 'outline'` | `'primary'` | Button variant |
 | `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Button size |
 | `disabled` | `boolean` | `false` | Disable the button |
+| `className` | `string` | `''` | Additional CSS classes |
 | `children` | `ReactNode` | - | Button content |
 
 All standard HTML button attributes are also supported.
 
-## 🎨 Design System
+## 🎨 Styling & Theming
 
-### Design Tokens
+### Using Component Props
 
-This library uses a two-tier token system:
-
-#### Foundation Tokens
-Primitive design values (colors, spacing, typography, etc.)
+The easiest way is to use the provided props:
 
 ```tsx
-import { foundationTokens } from 'design-components/styles';
-
-const MyComponent = () => (
-  <div style={{ color: foundationTokens.colors.blue[500] }}>
-    Hello World
-  </div>
-);
+<Button variant="primary" size="lg">
+  Click me
+</Button>
 ```
 
-#### Semantic Tokens
-Component-specific tokens with semantic meaning
+### Using Tailwind Classes
+
+You can use Tailwind utility classes directly:
 
 ```tsx
-import { semanticTokens } from 'design-components/styles';
-
-const MyButton = () => (
-  <button
-    css={{
-      ...semanticTokens.button.base,
-      backgroundColor: semanticTokens.button.primary.backgroundColor,
-      padding: semanticTokens.button.size.md.padding,
-    }}
-  >
-    Custom Button
-  </button>
-);
+<Button className="bg-btn-primary hover:bg-btn-primary-hover">
+  Custom Styled Button
+</Button>
 ```
 
-### Token Categories
+### Using the `cn` Utility
 
-- **Colors**: Blue, Gray, Green (success), Yellow (warning), Red (error)
-- **Typography**: Font families, sizes, weights, line heights
-- **Spacing**: 0-16 scale (0px - 64px)
-- **Border Radius**: none, sm, base, md, lg, xl, 2xl, full
-- **Shadows**: none, sm, base, md, lg, xl
-- **Transitions**: fast, base, slow
+For complex conditional styling, use the exported `cn` utility function:
+
+```tsx
+import { Button, cn } from '@dwoongb/design-components';
+
+function MyComponent({ isActive, isLoading }) {
+  return (
+    <Button
+      variant="primary"
+      className={cn(
+        'my-custom-class',
+        isActive && 'ring-2 ring-blue-500',
+        isLoading && 'animate-pulse',
+        {
+          'shadow-lg': isActive,
+          'opacity-70': isLoading
+        }
+      )}
+    >
+      Click me
+    </Button>
+  );
+}
+```
+
+The `cn` function combines `clsx` (for conditional classes) and `tailwind-merge` (for resolving Tailwind class conflicts).
+
+### Customizing with CSS Variables
+
+Override the default theme by customizing CSS variables:
+
+```css
+/* Your global CSS file */
+@import '@dwoongb/design-components/style.css';
+
+:root {
+  /* Customize button colors */
+  --color-btn-primary: purple;
+  --color-btn-primary-hover: darkpurple;
+  --color-btn-primary-active: rebeccapurple;
+}
+```
+
+### Advanced: Using Theme CSS
+
+Import the theme CSS to extend with Tailwind v4's `@theme`:
+
+```css
+/* Your global.css */
+@import 'tailwindcss';
+@import '@dwoongb/design-components/theme.css';
+
+@theme {
+  /* Override specific colors */
+  --color-btn-primary: purple;
+
+  /* Add new custom colors */
+  --color-custom: orange;
+}
+```
+
+## 🎨 Available CSS Variables
+
+### Button Colors
+
+```css
+--color-btn-primary: #3b82f6;
+--color-btn-primary-hover: #2563eb;
+--color-btn-primary-active: #1d4ed8;
+
+--color-btn-secondary: #6b7280;
+--color-btn-secondary-hover: #4b5563;
+--color-btn-secondary-active: #374151;
+
+--color-btn-outline: #3b82f6;
+```
+
+### Tailwind Utility Classes
+
+You can use these semantic classes with your own elements:
+
+```tsx
+<button className="bg-btn-primary hover:bg-btn-primary-hover active:bg-btn-primary-active">
+  Custom Button
+</button>
+```
+
+## 🛠️ Utility Functions
+
+### `cn` - Class Name Utility
+
+A powerful utility function that combines `clsx` and `tailwind-merge` for handling conditional classes and Tailwind class conflicts.
+
+```tsx
+import { cn } from '@dwoongb/design-components';
+
+// Simple usage
+cn('px-4 py-2', 'text-white')
+// → 'px-4 py-2 text-white'
+
+// Conditional classes
+cn('base-class', isActive && 'active-class', isFocused && 'focus-class')
+// → 'base-class active-class focus-class'
+
+// Object syntax
+cn({
+  'text-red-500': hasError,
+  'text-green-500': isSuccess
+})
+// → 'text-green-500'
+
+// Resolving Tailwind conflicts
+cn('px-4 py-2', 'px-6')
+// → 'py-2 px-6' (px-4 is overridden by px-6)
+```
+
+This is especially useful when you need to:
+- Apply conditional styles based on component state
+- Override default component styles
+- Avoid Tailwind class conflicts
+
+## 📚 TypeScript Support
+
+Full TypeScript support with exported types:
+
+```tsx
+import type { ButtonProps } from '@dwoongb/design-components';
+
+// Component props are fully typed
+const MyButton: React.FC<ButtonProps> = (props) => {
+  return <Button {...props} />;
+};
+```
+
+### Exported Types
+
+- `ButtonProps` - Props interface for the Button component
 
 ## 📚 Storybook
 
 View all components and design tokens in Storybook:
 
 ```bash
-pnpm storybook
+npm run storybook
 ```
 
-Visit [http://localhost:6006](http://localhost:6006) to browse:
-- **Components** - Interactive component examples
-- **Design System/Foundation Tokens** - Base design values
-- **Design System/Semantic Tokens** - Component-specific tokens
+Visit [http://localhost:6006](http://localhost:6006) to browse interactive component examples.
 
 ## 🛠️ Development
 
 ### Prerequisites
 
 - Node.js 18+
-- pnpm 8+
+- npm/pnpm/yarn
 
 ### Setup
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/dwoongb/design-components
 cd design-components
 
 # Install dependencies
-pnpm install
+npm install
 
 # Start Storybook
-pnpm storybook
+npm run storybook
 ```
 
 ### Project Structure
@@ -155,10 +287,14 @@ design-components/
 │   │   ├── foundationTokens.ts
 │   │   ├── semanticTokens.ts
 │   │   └── index.ts
-│   └── docs/                # Storybook documentation
-│       ├── FoundationTokens.mdx
-│       └── SemanticTokens.mdx
+│   ├── utils/               # Utility functions
+│   │   └── cn.ts            # Class name utility
+│   ├── docs/                # Storybook documentation
+│   ├── index.css            # Main CSS with @theme
+│   ├── theme.css            # Theme-only CSS
+│   └── index.ts             # Main entry point
 ├── .storybook/              # Storybook configuration
+├── tailwind.config.ts       # Tailwind configuration
 └── package.json
 ```
 
@@ -166,7 +302,7 @@ design-components/
 
 - **React 19** - UI library
 - **TypeScript 5.9** - Type safety
-- **Emotion** - CSS-in-JS styling
+- **Tailwind CSS v4** - Utility-first CSS framework
 - **Vite 7** - Build tool
 - **Storybook 9** - Component documentation
 - **ESLint** - Code linting
@@ -175,19 +311,19 @@ design-components/
 
 ```bash
 # Build the library
-pnpm build
+npm run build
 
 # Build Storybook (static site)
-pnpm build-storybook
+npm run build-storybook
 ```
 
 ## 📖 Design Philosophy
 
-### Component Independence
-Each component is fully self-contained with its own styles. No global CSS required.
+### Utility-First with Semantic Tokens
+Combines Tailwind's utility-first approach with semantic design tokens for maximum flexibility.
 
-### Token-Based Design
-All design values are defined in design tokens, ensuring consistency across components.
+### CSS Variables for Theming
+All colors are defined as CSS variables, making it easy to create custom themes.
 
 ### No Global Style Impact
 This library does not apply any global styles or CSS resets, ensuring it won't interfere with your application's existing styles.
@@ -201,12 +337,13 @@ Full TypeScript support with exported types for all components and design tokens
 - [x] Foundation tokens
 - [x] Semantic tokens
 - [x] Storybook setup
+- [x] Tailwind CSS v4 integration
+- [x] NPM publishing
 - [ ] Input component
 - [ ] Card component
 - [ ] Badge component
 - [ ] Modal component
 - [ ] Tooltip component
-- [ ] NPM publishing
 
 ## 📄 License
 
@@ -218,4 +355,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📞 Support
 
-For issues and questions, please use the [GitHub Issues](https://github.com/your-username/design-components/issues) page.
+For issues and questions, please use the [GitHub Issues](https://github.com/dwoongb/design-components/issues) page.

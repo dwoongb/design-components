@@ -1,3 +1,3 @@
 import './index.css';
 export * from './components';
-export * from './types/tailwind';
+export { cn } from './utils/cn';

@@ -1,6 +1,6 @@
 'use client';
 
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/utils/cn';
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -42,7 +42,7 @@ export const Button = ({
 
   return (
     <button
-      className={twMerge(
+      className={cn(
         baseClasses,
         variantClasses[variant],
         sizeClasses[size],

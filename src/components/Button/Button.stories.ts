@@ -37,7 +37,7 @@ export const Primary: Story = {
     variant: 'primary',
     size: 'md',
     disabled: false,
-    children: 'Primary Button',
+    children: 'Click Me!',
   },
 };
 

@@ -1,7 +1,7 @@
 {
   "name": "@dwoongb/design-components",
   "private": false,
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.es.js",
@@ -17,7 +17,9 @@
     "dist",
     "README.md"
   ],
-  "sideEffects": false,
+  "sideEffects": [
+    "dist/**/*.js"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -p tsconfig.build.json && vite build",

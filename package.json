@@ -1,7 +1,7 @@
 {
   "name": "@dwoongb/design-components",
   "private": false,
-  "version": "0.0.9",
+  "version": "0.0.10",
   "type": "module",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.es.js",
@@ -12,7 +12,8 @@
       "import": "./dist/index.es.js",
       "require": "./dist/index.cjs.js"
     },
-    "./dist/style.css": "./dist/style.css"
+    "./dist/style.css": "./dist/style.css",
+    "./theme.css": "./dist/theme.css"
   },
   "files": [
     "dist",
@@ -21,7 +22,7 @@
   "sideEffects": false,
   "scripts": {
     "dev": "vite",
-    "build": "tsc -p tsconfig.build.json && vite build",
+    "build": "tsc -p tsconfig.build.json && vite build && cp src/theme.css dist/theme.css",
     "build:types": "tsc -p tsconfig.build.json",
     "lint": "eslint .",
     "preview": "vite preview",

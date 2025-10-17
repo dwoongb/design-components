@@ -1,0 +1,12 @@
+@theme {
+  /* Button semantic colors */
+  --color-btn-primary: #3b82f6;
+  --color-btn-primary-hover: #2563eb;
+  --color-btn-primary-active: #1d4ed8;
+
+  --color-btn-secondary: #6b7280;
+  --color-btn-secondary-hover: #4b5563;
+  --color-btn-secondary-active: #374151;
+
+  --color-btn-outline: #3b82f6;
+}

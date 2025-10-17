@@ -2,7 +2,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
-import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
+// import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 
 // https://vite.dev/config/
 import path from 'node:path';
@@ -15,8 +15,7 @@ const dirname =
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  // @ts-expect-error - @tailwindcss/vite v4 has type incompatibility with Vite 7 (known issue: https://github.com/tailwindlabs/tailwindcss/issues/16488)
-  plugins: [react(), tailwindcss(), cssInjectedByJsPlugin()],
+  plugins: [react(), tailwindcss()],
   build: {
     emptyOutDir: false,
     lib: {
@@ -28,7 +27,7 @@ export default defineConfig({
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
-        assetFileNames: 'assets/[name][extname]',
+        assetFileNames: '[name][extname]',
         entryFileNames: () => {
           return 'index.[format].js';
         },

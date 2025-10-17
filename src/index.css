@@ -1,26 +1,30 @@
 @import 'tailwindcss';
 
-:root {
+@theme {
   /* Button semantic colors */
-  --btn-primary: #3b82f6;
-  --btn-primary-hover: #2563eb;
-  --btn-primary-active: #1d4ed8;
+  --color-btn-primary: #3b82f6;
+  --color-btn-primary-hover: #2563eb;
+  --color-btn-primary-active: #1d4ed8;
 
-  --btn-secondary: #6b7280;
-  --btn-secondary-hover: #4b5563;
-  --btn-secondary-active: #374151;
+  --color-btn-secondary: #6b7280;
+  --color-btn-secondary-hover: #4b5563;
+  --color-btn-secondary-active: #374151;
 
-  --btn-outline: #3b82f6;
+  --color-btn-outline: #3b82f6;
 }
 
-@theme {
-  --color-btn-primary: var(--btn-primary);
-  --color-btn-primary-hover: var(--btn-primary-hover);
-  --color-btn-primary-active: var(--btn-primary-active);
+@utility btn-primary {
+  background-color: var(--btn-primary);
+  color: var(--btn-primary-text);
+  hover: background-color: var(--btn-primary-hover);
+  active: background-color: var(--btn-primary-active);
+  disabled: opacity-50 cursor-not-allowed;
+}
 
-  --color-btn-secondary: var(--btn-secondary);
-  --color-btn-secondary-hover: var(--btn-secondary-hover);
-  --color-btn-secondary-active: var(--btn-secondary-active);
-
-  --color-btn-outline: var(--btn-outline);
+@utility btn-secondary {
+  background-color: var(--btn-secondary);
+  color: var(--btn-secondary-text);
+  hover: background-color: var(--btn-secondary-hover);
+  active: background-color: var(--btn-secondary-active);
+  disabled: opacity-50 cursor-not-allowed;
 }

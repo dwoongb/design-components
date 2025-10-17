@@ -1,1 +1,26 @@
 @import 'tailwindcss';
+
+:root {
+  /* Button semantic colors */
+  --btn-primary: #3b82f6;
+  --btn-primary-hover: #2563eb;
+  --btn-primary-active: #1d4ed8;
+
+  --btn-secondary: #6b7280;
+  --btn-secondary-hover: #4b5563;
+  --btn-secondary-active: #374151;
+
+  --btn-outline: #3b82f6;
+}
+
+@theme {
+  --color-btn-primary: var(--btn-primary);
+  --color-btn-primary-hover: var(--btn-primary-hover);
+  --color-btn-primary-active: var(--btn-primary-active);
+
+  --color-btn-secondary: var(--btn-secondary);
+  --color-btn-secondary-hover: var(--btn-secondary-hover);
+  --color-btn-secondary-active: var(--btn-secondary-active);
+
+  --color-btn-outline: var(--btn-outline);
+}

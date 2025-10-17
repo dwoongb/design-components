@@ -17,13 +17,17 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   // Base styles - applied to all buttons
-  const baseClasses = 'font-medium rounded-md transition-colors cursor-pointer border-none';
+  const baseClasses =
+    'font-medium rounded-md transition-colors cursor-pointer border-none';
 
   // Variant styles
   const variantClasses = {
-    primary: 'bg-blue-500 text-white hover:bg-blue-600 active:bg-blue-700',
-    secondary: 'bg-gray-500 text-white hover:bg-gray-600 active:bg-gray-700',
-    outline: 'bg-transparent border-2 border-solid border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white',
+    primary:
+      'bg-btn-primary text-white hover:bg-btn-primary-hover active:bg-btn-primary-active',
+    secondary:
+      'bg-btn-secondary text-white hover:bg-btn-secondary-hover active:bg-btn-secondary-active',
+    outline:
+      'bg-transparent border-2 border-solid border-btn-outline text-btn-outline hover:bg-btn-outline hover:text-white',
   };
 
   // Size styles
@@ -38,7 +42,13 @@ export const Button = ({
 
   return (
     <button
-      className={twMerge(baseClasses, variantClasses[variant], sizeClasses[size], disabledClasses, className)}
+      className={twMerge(
+        baseClasses,
+        variantClasses[variant],
+        sizeClasses[size],
+        disabledClasses,
+        className
+      )}
       disabled={disabled}
       {...props}
     >

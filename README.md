@@ -4,7 +4,7 @@ A React component library built with TypeScript, Tailwind CSS, and Storybook. Th
 
 ## 📖 Demo
 
-**[View Live Storybook →](https://68f1d6c48510c8472511e8fe-skchyikeox.chromatic.com/)**
+**[View Live Storybook →](https://68f1d6c48510c8472511e8fe-bspdmjervm.chromatic.com/)**
 
 ## 🚀 Features
 
@@ -34,12 +34,15 @@ import '@dwoongb/design-components/style.css';
 
 function App() {
   return (
-    <Button variant="primary" size="md">
+    <Button variant='primary' size='md'>
       Click me
     </Button>
   );
 }
 ```
+
+> **⚠️ Important Note:**
+> This library **does not include Tailwind's Preflight** (base reset styles) to prevent conflicts with your existing styles. The component styles only include Tailwind utilities and component-specific tokens. Make sure your project has appropriate base styles set up.
 
 ## 🎨 Components
 
@@ -54,18 +57,16 @@ import '@dwoongb/design-components/style.css';
 function App() {
   return (
     <>
-      <Button variant="primary" size="md">
+      <Button variant='primary' size='md'>
         Primary Button
       </Button>
-      <Button variant="secondary" size="lg">
+      <Button variant='secondary' size='lg'>
         Secondary Button
       </Button>
-      <Button variant="outline" size="sm">
+      <Button variant='outline' size='sm'>
         Outline Button
       </Button>
-      <Button disabled>
-        Disabled Button
-      </Button>
+      <Button disabled>Disabled Button</Button>
     </>
   );
 }
@@ -73,13 +74,13 @@ function App() {
 
 #### Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `'primary' \| 'secondary' \| 'outline'` | `'primary'` | Button variant |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Button size |
-| `disabled` | `boolean` | `false` | Disable the button |
-| `className` | `string` | `''` | Additional CSS classes |
-| `children` | `ReactNode` | - | Button content |
+| Prop        | Type                                    | Default     | Description            |
+| ----------- | --------------------------------------- | ----------- | ---------------------- |
+| `variant`   | `'primary' \| 'secondary' \| 'outline'` | `'primary'` | Button variant         |
+| `size`      | `'sm' \| 'md' \| 'lg'`                  | `'md'`      | Button size            |
+| `disabled`  | `boolean`                               | `false`     | Disable the button     |
+| `className` | `string`                                | `''`        | Additional CSS classes |
+| `children`  | `ReactNode`                             | -           | Button content         |
 
 All standard HTML button attributes are also supported.
 
@@ -90,7 +91,7 @@ All standard HTML button attributes are also supported.
 The easiest way is to use the provided props:
 
 ```tsx
-<Button variant="primary" size="lg">
+<Button variant='primary' size='lg'>
   Click me
 </Button>
 ```
@@ -100,7 +101,7 @@ The easiest way is to use the provided props:
 You can use Tailwind utility classes directly:
 
 ```tsx
-<Button className="bg-btn-primary hover:bg-btn-primary-hover">
+<Button className='bg-btn-primary hover:bg-btn-primary-hover'>
   Custom Styled Button
 </Button>
 ```
@@ -115,14 +116,14 @@ import { Button, cn } from '@dwoongb/design-components';
 function MyComponent({ isActive, isLoading }) {
   return (
     <Button
-      variant="primary"
+      variant='primary'
       className={cn(
         'my-custom-class',
         isActive && 'ring-2 ring-blue-500',
         isLoading && 'animate-pulse',
         {
           'shadow-lg': isActive,
-          'opacity-70': isLoading
+          'opacity-70': isLoading,
         }
       )}
     >
@@ -189,7 +190,7 @@ Import the theme CSS to extend with Tailwind v4's `@theme`:
 You can use these semantic classes with your own elements:
 
 ```tsx
-<button className="bg-btn-primary hover:bg-btn-primary-hover active:bg-btn-primary-active">
+<button className='bg-btn-primary hover:bg-btn-primary-hover active:bg-btn-primary-active'>
   Custom Button
 </button>
 ```
@@ -204,26 +205,27 @@ A powerful utility function that combines `clsx` and `tailwind-merge` for handli
 import { cn } from '@dwoongb/design-components';
 
 // Simple usage
-cn('px-4 py-2', 'text-white')
+cn('px-4 py-2', 'text-white');
 // → 'px-4 py-2 text-white'
 
 // Conditional classes
-cn('base-class', isActive && 'active-class', isFocused && 'focus-class')
+cn('base-class', isActive && 'active-class', isFocused && 'focus-class');
 // → 'base-class active-class focus-class'
 
 // Object syntax
 cn({
   'text-red-500': hasError,
-  'text-green-500': isSuccess
-})
+  'text-green-500': isSuccess,
+});
 // → 'text-green-500'
 
 // Resolving Tailwind conflicts
-cn('px-4 py-2', 'px-6')
+cn('px-4 py-2', 'px-6');
 // → 'py-2 px-6' (px-4 is overridden by px-6)
 ```
 
 This is especially useful when you need to:
+
 - Apply conditional styles based on component state
 - Override default component styles
 - Avoid Tailwind class conflicts
@@ -320,15 +322,19 @@ npm run build-storybook
 ## 📖 Design Philosophy
 
 ### Utility-First with Semantic Tokens
+
 Combines Tailwind's utility-first approach with semantic design tokens for maximum flexibility.
 
 ### CSS Variables for Theming
+
 All colors are defined as CSS variables, making it easy to create custom themes.
 
 ### No Global Style Impact
-This library does not apply any global styles or CSS resets, ensuring it won't interfere with your application's existing styles.
+
+This library **intentionally excludes Tailwind's Preflight** (base reset styles). Only Tailwind utilities and component-specific tokens are included, ensuring it won't interfere with your application's existing base styles or global resets.
 
 ### TypeScript First
+
 Full TypeScript support with exported types for all components and design tokens.
 
 ## 🎯 Roadmap

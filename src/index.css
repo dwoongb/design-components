@@ -1,2 +1,21 @@
-@import 'tailwindcss';
+/**
+ * Component Library CSS
+ *
+ * NOTE: Preflight is disabled to prevent conflicts with user's existing styles.
+ * Only Tailwind utilities and component-specific tokens are included.
+ * Users are expected to have their own base styles or Tailwind setup.
+ */
+
+@layer theme, base, components, utilities;
+
+/* Import Tailwind theme (includes CSS variables) */
+@import 'tailwindcss/theme.css' layer(theme);
+
+/* Skip preflight to avoid style conflicts */
+/* @import 'tailwindcss/preflight.css' layer(base); */
+
+/* Import Tailwind utilities */
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+/* Import component-specific theme tokens */
 @import './theme.css';
